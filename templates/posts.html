@@ -3,12 +3,21 @@
 {% block title %} All Posts {% endblock title %}
 
 {%block content %}
-<div class="container">
    <div class="container">
-      <h1>All Posts</h1>
+      <div class="container">
+         <h1>All Posts</h1>
+         {% if articles|length > 0 %}
+      </div>
+         {% for el in arcticle %}
+            <div class="alert alert-info">
+               <h2>{{ el.title }}</h2>
+               <p>{{ el.intro }}</p>
+               <p><b>Дата:{{ el.date.date() }}</b></p>
+               <a href="/posts/{{ el.id }}" class="btn btn-warning">Детальнее</a>
+            </div>         
+         {% endfor %}
+      {% else %}
+      <p>no text</p>
+      {% endif %}
    </div>
-   {% for el in arcticle %}
-      
-   {% endfor %}
-</div>
 {% endblock content %}
